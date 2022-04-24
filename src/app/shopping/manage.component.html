@@ -1,0 +1,30 @@
+<h4>Product Management</h4>
+
+<form>
+    <input [(ngModel)]="frmProduct.id" placeholder="Product Id" name="txtId" readonly>
+    <input [(ngModel)]="frmProduct.name" placeholder="Enter Product Name" name="txtName">
+    <input [(ngModel)]="frmProduct.price" placeholder="Enter Product Price" name="txtPrice">
+    <input [(ngModel)]="frmProduct.description" placeholder="Enter Description" name="txtDesc">
+    <button type="button" class="btn btn-primary" (click)="add()">Add</button>
+    <button type="button" class="btn btn-success" (click)="update()">Update</button>
+</form>
+<br>
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th><th>Name</th><th>Price</th><th>Description</th><th>Action</th>
+    </tr>
+    <tr *ngIf="mgProducts.length == 0">
+        <th colspan="5">No Products Found</th>
+    </tr>
+    <tr *ngFor="let product of mgProducts">
+        <td>{{product.id}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.description}}</td>
+        <td><button class="btn btn-danger"
+                (click)="remove(product.id)">Delete</button>
+            <button class="btn btn-success" (click)="edit(product)">
+                Edit</button>    
+        </td>
+    </tr>
+</table>
